@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.DBOperations;
+using WebApi.Entities;
 
 namespace WebApi
 {
@@ -17,6 +18,11 @@ namespace WebApi
                 {
                     return;   // DB has been seeded
                 }
+                context.Genres.AddRange(
+                    new Genre { Name = "Personal Growth" },
+                    new Genre { Name = "Science Fiction" },
+                    new Genre { Name = "Romance" }
+                );
 
                 context.Books.AddRange(
                     new Book

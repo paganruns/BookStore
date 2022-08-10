@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Commons;
 using WebApi.DBOperations;
@@ -11,12 +12,14 @@ namespace WebApi.BookOperations.GetBookDetail
     public class GetBookDetailQuery
     {
         private readonly BookStoreDbContext _dbcontext;
+        private readonly IMapper _mapper;
         public int bookID { get; set; }
 
 
-        public GetBookDetailQuery(BookStoreDbContext dbcontext)
+        public GetBookDetailQuery(BookStoreDbContext dbcontext, IMapper mapper)
         {
             _dbcontext = dbcontext;
+            _mapper = mapper;
         }
 
         public BookDetailViewModel Handle()
@@ -27,12 +30,7 @@ namespace WebApi.BookOperations.GetBookDetail
                 throw new InvalidOperationException("Book not found");
             }
 
-            BookDetailViewModel vm = new BookDetailViewModel();
-
-            vm.Title = book.Title;
-            vm.Genre = ((GenreEnum)book.GenreId).ToString();
-            vm.PageCount = book.PageCount;
-            vm.PublishDate = book.PublishDate.ToString("dd/MM/yyyy");
+            BookDetailViewModel vm = _mapper.Map<BookDetailViewModel>(book);
 
             return vm;
         }

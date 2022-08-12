@@ -11,9 +11,9 @@ namespace WebApi.Application.GenreOperations.Commands.DeleteGenre
     {
         public int GenreIDtoDelete{get;set;}
 
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
 
-        public DeleteGenreCmd(BookStoreDbContext context)
+        public DeleteGenreCmd(IBookStoreDbContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace WebApi.Application.GenreOperations.Commands.DeleteGenre
             if (genre is null)
               throw new NullReferenceException("genre is not found");
 
-            _context.Remove(genre);
+            _context.Genres.Remove(genre);
             _context.SaveChanges();
         }
          

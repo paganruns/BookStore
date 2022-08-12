@@ -9,10 +9,10 @@ namespace WebApi.Application.GenreOperations.Queries.GetGenreDetail
     public class QGetGenresDetail
     {
         public int GenreIDtoGet {get; set;}
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
         private readonly IMapper _mapper;
         
-        public QGetGenresDetail(BookStoreDbContext context, IMapper mapper)
+        public QGetGenresDetail(IBookStoreDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

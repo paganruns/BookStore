@@ -13,10 +13,10 @@ namespace WebApi.Application.AuthorOperations.Queries.GetAuthorDetail
 
     public class QGetAuthorDetail
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
         public int AuthorID;
 
-        public QGetAuthorDetail(BookStoreDbContext context, IMapper mapper)
+        public QGetAuthorDetail(IBookStoreDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

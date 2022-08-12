@@ -12,9 +12,9 @@ namespace WebApi.Application.BookOperations.UpdateBook
     {
         public int BookIDtoUpdate { get; set; }
         public UpdateBookModel Model { get; set; }
-        private readonly BookStoreDbContext _dbcontext;
+        private readonly IBookStoreDbContext _dbcontext;
 
-        public UpdateBookQuery(BookStoreDbContext dbcontext)
+        public UpdateBookQuery(IBookStoreDbContext dbcontext)
         {
             _dbcontext = dbcontext;
         }

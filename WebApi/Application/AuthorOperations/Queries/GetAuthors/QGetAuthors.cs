@@ -13,9 +13,9 @@ namespace WebApi.Application.AuthorOperations.Queries.GetAuthors
 
     public class QGetAuthors
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
 
-        public QGetAuthors(BookStoreDbContext context, IMapper mapper)
+        public QGetAuthors(IBookStoreDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

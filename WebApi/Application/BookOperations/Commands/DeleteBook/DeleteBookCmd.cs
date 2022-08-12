@@ -10,9 +10,9 @@ namespace WebApi.Application.BookOperations.DeleteBook
     public class DeleteBookCommand
     {
         public int BookIDtoDelete { get; set; }
-        private readonly BookStoreDbContext _dbcontext;
+        private readonly IBookStoreDbContext _dbcontext;
 
-        public DeleteBookCommand(BookStoreDbContext dbcontext)
+        public DeleteBookCommand(IBookStoreDbContext dbcontext)
         {
             _dbcontext = dbcontext;
         }
